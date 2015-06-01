@@ -1,7 +1,9 @@
 package models;
 
-/**
- * Created by ahasall on 27/05/15.
- */
-public class knockout extends Stage {
+import javax.persistence.*;
+
+public class Knockout extends Stage {
+
+    @Id
+    public Long id;
 }

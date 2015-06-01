@@ -1,21 +1,27 @@
 package models;
 
-import org.joda.time.LocalDate;
+import play.db.ebean.Model;
 
+import javax.persistence.*;
+import java.util.Date;
 import java.util.List;
 
-/**
- * Created by ahasall on 27/05/15.
- */
-public abstract class Stage {
-    String stageName;
-    LocalDate stageStartDate;
-    LocalDate stageEndDate;
-    Integer ptsPerWin;
-    Integer ptsPerLoss;
-    boolean drawActive;
-    Integer ptsPerDraw;
+public abstract class Stage extends Model {
 
-    List<Group> stageGroups;
+    @Id
+    public Long id;
 
+    public String stageName;
+    public Date stageStartDate;
+    public Date stageEndDate;
+    public Long ptsPerWin;
+    public Long ptsPerLoss;
+    public boolean drawActive;
+    public Long ptsPerDraw;
+
+    @ManyToOne(cascade = CascadeType.PERSIST)
+    public Contest contest;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    public List<Group> stageGroups;
 }

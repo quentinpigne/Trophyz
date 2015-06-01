@@ -1,19 +1,30 @@
 package models;
 
-import org.joda.time.LocalDate;
-import org.joda.time.LocalTime;
+import play.db.ebean.Model;
 
+import javax.persistence.*;
+import java.util.Date;
 import java.util.List;
 
-/**
- * Created by ahasall on 27/05/15.
- */
-public class Match {
-    LocalDate matchDate;
-    LocalTime matchTime;
-    Integer matchDuration;
-    String matchScore;
-    Place matchPlace;
-    List<User> matchUsers; // liste des participants aux match ( 1 vs 1)
-    List<Team> matchTeams; // liste des équipes qui s'affrontent
+public class Match extends Model {
+
+    @Id
+    public Long id;
+
+    public Date matchDate;
+    public Date matchTime;
+    public Long matchDuration;
+    public String matchScore;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    public Group group;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    public Place matchPlace;
+
+    @ManyToMany(mappedBy = "", cascade = CascadeType.ALL)
+    public List<User> matchUsers; // liste des participants aux match ( 1 vs 1)
+
+    @ManyToMany(mappedBy = "", cascade = CascadeType.ALL)
+    public List<Team> matchTeams; // liste des équipes qui s'affrontent
 }

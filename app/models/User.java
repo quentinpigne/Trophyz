@@ -1,26 +1,42 @@
 package models;
 
-import org.joda.time.LocalDate;
+import play.db.ebean.Model;
 
+import javax.persistence.*;
+import java.util.Date;
 import java.util.List;
 
-/**
- * Created by ahasall on 27/05/15.
- */
-public class User {
-    String firstName;
-    String lastName;
-    LocalDate birthday;
-    Integer age;
-    String adress;
-    String email;
-    String phone;
-    String description;
-    Integer nbContest;
+@Entity
+public class User extends Model {
 
-    List<Contest> contests;
-    List<Team> teams;
-    Scores userScores;
+    @Id
+    public Long id;
 
+    public String firstName;
+    public String lastName;
+    public Date birthDate;
+    public Long age;
+    public String address;
+    public String email;
+    public String phone;
+    public String description;
+    public Long nbContest;
 
+    @ManyToMany(mappedBy = "", cascade = CascadeType.PERSIST)
+    public List<Contest> contestsContestant;
+
+    @OneToMany(mappedBy = "", cascade = CascadeType.PERSIST)
+    public List<Contest> contestsOrganizer;
+
+    @OneToMany(mappedBy = "", cascade = CascadeType.ALL)
+    public List<Scores> userScores;
+
+    @ManyToMany(mappedBy = "", cascade = CascadeType.ALL)
+    public List<Team> teams;
+
+    @ManyToMany(mappedBy = "", cascade = CascadeType.ALL)
+    public List<Group> groups;
+
+    @ManyToMany(mappedBy = "", cascade = CascadeType.ALL)
+    public List<Match> matches;
 }

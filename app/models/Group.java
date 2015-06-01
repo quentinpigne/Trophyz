@@ -1,15 +1,24 @@
 package models;
 
-import java.util.HashMap;
+import javax.persistence.*;
 import java.util.List;
 
-/**
- * Created by ahasall on 27/05/15.
- */
 public class Group {
-    String groupName;
-    List<User> groupUsers;
-    List<Match> groupMatches;
 
-    HashMap<User,Scores> scores; // au sein d'un groupe le score dépend de l'utilisateur
+    @Id
+    public Long id;
+
+    public String groupName;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    public Stage stage;
+
+    @ManyToMany(mappedBy = "", cascade = CascadeType.ALL)
+    public List<User> groupUsers;
+
+    @ManyToMany(mappedBy = "", cascade = CascadeType.ALL)
+    public List<Match> groupMatches;
+
+    @OneToMany(mappedBy = "", cascade = CascadeType.ALL)
+    public List<Scores> scores;
 }

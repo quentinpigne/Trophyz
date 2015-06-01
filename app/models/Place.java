@@ -1,9 +1,16 @@
 package models;
 
-/**
- * Created by ahasall on 27/05/15.
- */
+import javax.persistence.*;
+import java.util.List;
+
 public class Place {
-    String placeName;
-    String placeLocation;
+
+    @Id
+    public Long id;
+
+    public String placeName;
+    public String placeLocation;
+
+    @OneToMany(mappedBy = "", cascade = CascadeType.ALL)
+    public List<Match> matches;
 }
