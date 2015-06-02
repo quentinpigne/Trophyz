@@ -2,8 +2,10 @@ package models;
 
 import javax.persistence.*;
 
+@Entity
 public class Championship extends Stage {
 
     @Id
-    public Long id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    public Long championshipId;
 }

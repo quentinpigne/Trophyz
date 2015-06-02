@@ -6,10 +6,12 @@ import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
 
+@Entity
 public class Match extends Model {
 
     @Id
-    public Long id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    public Long matchId;
 
     public Date matchDate;
     public Date matchTime;
@@ -17,14 +19,14 @@ public class Match extends Model {
     public String matchScore;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    public Group group;
+    public Group matchGroup;
 
     @ManyToOne(cascade = CascadeType.ALL)
     public Place matchPlace;
 
-    @ManyToMany(mappedBy = "", cascade = CascadeType.ALL)
-    public List<User> matchUsers; // liste des participants aux match ( 1 vs 1)
+    @ManyToMany(cascade = CascadeType.ALL)
+    public List<User> matchUsers;
 
-    @ManyToMany(mappedBy = "", cascade = CascadeType.ALL)
-    public List<Team> matchTeams; // liste des équipes qui s'affrontent
+    @ManyToMany(cascade = CascadeType.ALL)
+    public List<Team> matchTeams;
 }

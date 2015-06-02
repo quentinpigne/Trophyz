@@ -10,33 +10,33 @@ import java.util.List;
 public class User extends Model {
 
     @Id
-    public Long id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    public Long userId;
 
-    public String firstName;
-    public String lastName;
-    public Date birthDate;
-    public Long age;
-    public String address;
-    public String email;
-    public String phone;
-    public String description;
-    public Long nbContest;
+    public String userFirstName;
+    public String userLastName;
+    public Date userBirthDate;
+    public Long userAge;
+    public String userAddress;
+    public String userEmail;
+    public String userPhone;
+    public String userDescription;
 
-    @ManyToMany(mappedBy = "", cascade = CascadeType.PERSIST)
-    public List<Contest> contestsContestant;
+    @ManyToMany(mappedBy = "contestContestants", cascade = CascadeType.ALL)
+    public List<Contest> userContestsAsContestant;
 
-    @OneToMany(mappedBy = "", cascade = CascadeType.PERSIST)
-    public List<Contest> contestsOrganizer;
+    @OneToMany(mappedBy = "contestOrganizer", cascade = CascadeType.ALL)
+    public List<Contest> userContestsAsOrganizer;
 
-    @OneToMany(mappedBy = "", cascade = CascadeType.ALL)
-    public List<Scores> userScores;
+    @OneToMany(mappedBy = "scoreUser", cascade = CascadeType.ALL)
+    public List<Score> userScores;
 
-    @ManyToMany(mappedBy = "", cascade = CascadeType.ALL)
-    public List<Team> teams;
+    @ManyToMany(mappedBy = "teamUsers", cascade = CascadeType.ALL)
+    public List<Team> userTeams;
 
-    @ManyToMany(mappedBy = "", cascade = CascadeType.ALL)
-    public List<Group> groups;
+    @ManyToMany(mappedBy = "groupUsers", cascade = CascadeType.ALL)
+    public List<Group> userGroups;
 
-    @ManyToMany(mappedBy = "", cascade = CascadeType.ALL)
-    public List<Match> matches;
+    @ManyToMany(mappedBy = "matchUsers", cascade = CascadeType.ALL)
+    public List<Match> userMatches;
 }
