@@ -1,7 +1,61 @@
-@(message: String)
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Trophyz, l'application qui défie tes amis !</title>
+        <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/bootstrap.min.css")">
+        <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/main.css")">
+        <link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/favicon.png")">
+        <script src="@routes.Assets.at("javascripts/jquery-2.1.4.min.js")" type="text/javascript"></script>
+        <script src="@routes.Assets.at("javascripts/bootstrap.min.js")" type="text/javascript"></script>
+        <script src="@routes.Assets.at("javascripts/scrolling.js")" type="text/javascript"></script>
+    </head>
+    <body>
+        <header>
+            <h1><a href="#search">Trophyz</a></h1>
+            <nav>
+                <a href="#presentation">Qu'est ce que c'est ?</a>
+                <a href="#signup">Comment s'inscrire ?</a>
+            </nav>
+            <nav class="right">
+                <a href="" data-toggle="modal" data-target="#connectForm">Connexion</a>
+            </nav>
+        </header>
 
-@main("Welcome to Play") {
+        <section id="search">
+            <form method="POST" action="/loggin">
+                <input class="form-control" type="text" placeholder="Rechercher une compétition"/>
+                <button class="btn btn-primary">Rechercher</button>
+            </form>
+        </section>
 
-    @play20.welcome(message, style = "Java")
+        <section id="presentation">
+            <p>Trophyz est une plate-forme en ligne dont le but est de faciliter l'organisation de tournois et de compétitions de toutes sortes. Elle permettra à toute personne inscrite de créer une compétition, soit en utilisant un modèle (un championnat de football, un tournoi de belote...), soit en créant un tournoi personnalisé. Elle devra ensuite y inviter d'autres membres ou les laisser s'inscrire par eux-même. Une fois les inscriptions closes, l'application se charge d'organiser les différentes rencontres selon un calendrier et les consignes laissées par l'organisateur lors de la création. Chaque participant devra ensuite saisir son score à l'issu d'une rencontre, score qui aura la possibilité d'être modéré par l'organisateur en cas de litige.</p>
+        </section>
 
-}
+        <section id="signup">
+
+        </section>
+
+        <div class="modal fade" id="connectForm" tabindex="-1" role="dialog" aria-labelledby="connexionLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h3 class="modal-title" id="connexionLabel">Connexion</h3>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <label for="username">Nom d'utilisateur : </label>
+                            <input type="text" id="username"/>
+                            <label for="password">Mot de passe : </label>
+                            <input type="password" id="password"/>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default">Connexion</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
