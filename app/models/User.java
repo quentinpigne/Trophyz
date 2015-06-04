@@ -13,6 +13,8 @@ public class User extends Model {
     @GeneratedValue(strategy = GenerationType.AUTO)
     public Long userId;
 
+    public String userUserName;
+    public String userPassword;
     public String userFirstName;
     public String userLastName;
     public Date userBirthDate;
