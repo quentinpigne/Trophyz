@@ -119,27 +119,27 @@ header.collapsed nav a {
 }
 
 /* Connexion */
-#connectForm div.modal-content {
+#connexionModal div.modal-content {
     margin: auto;
     width: 350px;
 }
 
-#connectForm #connexionLabel {
+#connexionModal #connexionLabel {
     font-family: 'Pacifico';
 }
 
-#connectForm div.modal-content {
+#connexionModal div.modal-content {
     color: white;
     background-color: grey;
 }
 
-#connectForm div.modal-body form label {
+#connexionModal div.modal-body form label {
     display: inline-block;
     width: 140px;
     text-align: right;
 }
 
-#connectForm div.modal-footer button {
+#connexionModal div.modal-footer button {
     font-family: 'Ubuntu';
     font-size: 12px;
 }
