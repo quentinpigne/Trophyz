@@ -30,7 +30,7 @@ public class Test extends Controller {
             tournoi.addContestant(contestants.get(i));
 
         }
-        Championship championnat = new Championship("Championnant",date,date,(long) 3,(long) 0,true, (long) 1, new Group(tournoi.contestants));
+        Championship championnat = new Championship("Championnant",date,date,(long) 3,(long) 0,true, (long) 1, new Group(tournoi.contestContestants));
         tournoi.addStage(championnat);
 
         Html html = contest.render(tournoi);

@@ -14,17 +14,17 @@
     <td>@tournoi.contestName</td>
     <td>@tournoi.contestStartDate</td>
     <td>@tournoi.contestEndDate</td>
-    <td>@tournoi.nbContestants</td>
-    <td>@tournoi.organizer.firstName</td>
+    <td>@tournoi.contestNbContestants</td>
+    <td>@tournoi.contestOrganizer.userFirstName</td>
   </tbody>
 </table>
 
 <h1>Informations sur l'organisateur</h1>
-  @test(tournoi.organizer)
+  @test(tournoi.contestOrganizer)
 
   <h1>Liste des participant</h1>
-  @for(user <- tournoi.contestants){
-    @user.firstName
+  @for(user <- tournoi.contestContestants){
+    @user.userFirstName
   }
 
   <h1>Liste des stages</h1>
