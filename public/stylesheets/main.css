@@ -22,6 +22,10 @@ a:focus {
     text-decoration: none;
 }
 
+input {
+    color: black;
+}
+
 /* Header */
 header {
     position: fixed;

@@ -8,9 +8,6 @@ import java.util.List;
 @Entity
 public class Championship extends Stage {
 
-    @Id
-    public Long id;
-
     public List<User> championshipContestants;
 
     public Championship(String stageName, Date stageStartDate, Date stageEndDate, Long ptsPerWin, Long ptsPerLoss, boolean drawActive, Long ptsPerDraw, Group group) {
