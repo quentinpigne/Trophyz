@@ -1,7 +1,112 @@
-@(message: String)
+@(userForm: Form[User])
 
-@main("Welcome to Play") {
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Trophyz, l'application qui défie tes amis !</title>
+        <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/bootstrap.min.css")">
+        <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/main.css")">
+        <link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/favicon.png")">
+        <script src="@routes.Assets.at("javascripts/jquery-2.1.4.min.js")" type="text/javascript"></script>
+        <script src="@routes.Assets.at("javascripts/bootstrap.min.js")" type="text/javascript"></script>
+        <script src="@routes.Assets.at("javascripts/scrolling.js")" type="text/javascript"></script>
+    </head>
+    <body>
+        <header>
+            <h1><a href="#search">Trophyz</a></h1>
+            <nav>
+                <a href="#presentation">Qu'est ce que c'est ?</a>
+                <a href="#signup">Comment s'inscrire ?</a>
+            </nav>
+            <nav class="right">
+                <a href="" data-toggle="modal" data-target="#connexionModal">Connexion</a>
+            </nav>
+        </header>
 
-    @play20.welcome(message, style = "Java")
+        <section id="search">
+            <form method="POST" action="/loggin">
+                <input class="form-control" type="text" placeholder="Rechercher une compétition"/>
+                <button class="btn btn-primary">Rechercher</button>
+            </form>
+        </section>
 
-}
+        <section id="presentation">
+            <article>
+                <h2>Présentation</h2>
+                <p>
+                    Trophyz est une plate-forme en ligne centrée l'organisation de tournois et de compétitions de toutes sortes,
+                    tout cela d'une manière sociale et amusante. Elle permet à toute personne inscrite de participer à des
+                    compétitions, mais aussi d'en créer, soit en utilisant un modèle (un championnat de football,
+                    un tournoi de belote...), soit à l'aide de l'outil de création lui permettant une personnalisation sans limite.
+                    Il lui faut ensuite y inviter d'autres membres ou bien les laisser s'inscrire par eux-même. Une fois les
+                    inscriptions terminées, l'application se charge d'organiser les différents matchs selon un calendrier et les
+                    consignes laissées par l'organisateur lors de la création. À l'issu de chaque rencontre, les participants
+                    entrent leurs scores (modéré si besoin par l'organisateur en cas de litige), un classement est ainsi ensuite
+                    établi et des récompenses (trophées, badges...) peuvent être remis aux participants afin de venir enrichir leur
+                    page de profil.
+                </p>
+            </article>
+            <article>
+                <h2>Gestion des membres</h2>
+                <p>
+                    Chaque membre possède une page de profil recensant ses informations personnelles, les équipes qu'ils suit ou
+                    dans lesquelles il est membre, mais aussi d'autres informations comme un historique des compétitions auxquelles
+                    il a participé, des statistiques sur ses performances et pour finir une étagère sur laquelle sont entreposés
+                    les trophées et badges acquis au fil de ses participations sur la plate-forme. Chaque membre a la possibilité
+                    de suivre un autre membre ou une équipe afin d'être informé en direct de ses participations à des compétitions,
+                    de ses résultats...
+                </p>
+                <p>
+                    Une gestion d'équipes est proposée sur la plate-forme, donnant la possibilité aux membres de créer des équipes
+                    permanentes, chacune avec sa page et son palmarès, dans lesquelles sont inscrits d'autres membres et qui peuvent
+                    ainsi participer aux compétitions par équipe.
+                </p>
+            </article>
+            <article>
+                <h2>Objectifs</h2>
+                <p>
+                    Les objectifs de la plate-forme sont donc relativement simples. Le principal étant de fournir un service
+                    d'organisation de compétitions très généraliste, de par la diversité des compétitions qu'il permet d'organiser,
+                    et simple d'utilisation à travers son interface agréable, intuitive et les diverses automatisations qu'elle
+                    propose pour l'organisation (création des matchs, établissement du classement...). L'objectif secondaire étant
+                    d'être aussi social et amusant, en proposant un système de suivi de membres et d'équipes, de statistiques de
+                    performances et bien sûr de trophées et de badges, récompenses symboliques à la participation des membres aux
+                    diverses compétitions.
+                </p>
+            </article>
+        </section>
+
+        <section id="signup">
+            @helper.form(action = routes.Authentication.signup(), '_id -> "signupForm") {
+                @helper.inputText(userForm("userUserName"), '_label -> "Nom d'utilisateur")
+                @helper.inputPassword(userForm("userPassword"), '_label -> "Mot de passe")
+                @helper.inputText(userForm("userFirstName"), '_label -> "Prénom")
+                @helper.inputText(userForm("userLastName"), '_label -> "Nom")
+                @helper.inputDate(userForm("userBirthDate"), '_label -> "Date de naissance")
+                @helper.inputText(userForm("userAddress"), '_label -> "Adresse")
+                @helper.inputText(userForm("userEmail"), '_label -> "Email")
+                @helper.inputText(userForm("userPhone"), '_label -> "Téléphone")
+                @helper.textarea(userForm("userDescription"), '_label -> "Description")
+                <button type="submit" class="btn btn-default">Inscription</button>
+            }
+        </section>
+
+        <div class="modal fade" id="connexionModal" tabindex="-1" role="dialog" aria-labelledby="connexionLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h3 class="modal-title" id="connexionLabel">Connexion</h3>
+                    </div>
+                    <div class="modal-body">
+                        @helper.form(action = routes.Authentication.login(), '_id -> "loginForm") {
+                            @helper.inputText(userForm("userUserName"), '_label -> "Nom d'utilisateur")
+                            @helper.inputPassword(userForm("userPassword"), '_label -> "Mot de passe")
+                            <button type="submit" class="btn btn-default">Connexion</button>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

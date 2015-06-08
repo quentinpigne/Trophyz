@@ -1,26 +1,30 @@
 package models;
 
+import play.db.ebean.Model;
+
 import javax.persistence.*;
 import java.util.List;
 
-public class Group {
+@Entity
+public class Group extends Model {
 
     @Id
-    public Long id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    public Long groupId;
 
     public String groupName;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    public Stage stage;
+    public Stage groupStage;
 
-    @ManyToMany(mappedBy = "", cascade = CascadeType.ALL)
+    @ManyToMany(cascade = CascadeType.ALL)
     public List<User> groupUsers;
 
-    @ManyToMany(mappedBy = "", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "matchGroup", cascade = CascadeType.ALL)
     public List<Match> groupMatches;
 
-    @OneToMany(mappedBy = "", cascade = CascadeType.ALL)
-    public List<Scores> scores;
+    @OneToMany(mappedBy = "scoreGroup", cascade = CascadeType.ALL)
+    public List<Score> groupScores;
 
     public Group(List<User> contestants) {
         this.groupUsers = contestants;

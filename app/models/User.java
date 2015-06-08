@@ -10,45 +10,49 @@ import java.util.List;
 public class User extends Model {
 
     @Id
-    public Long id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    public Long userId;
 
-    public String firstName;
-    public String lastName;
-    public Date birthDate;
-    public Long age;
-    public String address;
-    public String email;
-    public String phone;
-    public String description;
+    public String userUserName;
+    public String userPassword;
+    public String userFirstName;
+    public String userLastName;
+    public Date userBirthDate;
+    public Long userAge;
+    public String userAddress;
+    public String userEmail;
+    public String userPhone;
+    public String userDescription;
 
+    @ManyToMany(mappedBy = "contestContestants", cascade = CascadeType.ALL)
+    public List<Contest> userContestsAsContestant;
 
-    @ManyToMany(mappedBy = "", cascade = CascadeType.PERSIST)
-    public List<Contest> contestsContestant;
+    @OneToMany(mappedBy = "contestOrganizer", cascade = CascadeType.ALL)
+    public List<Contest> userContestsAsOrganizer;
 
-    @OneToMany(mappedBy = "", cascade = CascadeType.PERSIST)
-    public List<Contest> contestsOrganizer;
+    @OneToMany(mappedBy = "scoreUser", cascade = CascadeType.ALL)
+    public List<Score> userScores;
 
-    @OneToMany(mappedBy = "", cascade = CascadeType.ALL)
-    public List<Scores> userScores;
+    @ManyToMany(mappedBy = "teamUsers", cascade = CascadeType.ALL)
+    public List<Team> userTeams;
 
-    @ManyToMany(mappedBy = "", cascade = CascadeType.ALL)
-    public List<Team> teams;
+    @ManyToMany(mappedBy = "groupUsers", cascade = CascadeType.ALL)
+    public List<Group> userGroups;
 
-    @ManyToMany(mappedBy = "", cascade = CascadeType.ALL)
-    public List<Group> groups;
+    @ManyToMany(mappedBy = "matchUsers", cascade = CascadeType.ALL)
+    public List<Match> userMatches;
 
-    @ManyToMany(mappedBy = "", cascade = CascadeType.ALL)
-    public List<Match> matches;
 
     public User(Long id, String firstName, String lastName, Date birthDate, Long age, String address, String email, String phone, String description) {
-        this.id = id;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.birthDate = birthDate;
-        this.age = age;
-        this.address = address;
-        this.email = email;
-        this.phone = phone;
-        this.description = description;
+        this.userId = id;
+        this.userFirstName = firstName;
+        this.userLastName = lastName;
+        this.userBirthDate = birthDate;
+        this.userAge = age;
+        this.userAddress = address;
+        this.userEmail = email;
+        this.userPhone = phone;
+        this.userDescription = description;
     }
+
 }

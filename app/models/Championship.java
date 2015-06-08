@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+@Entity
 public class Championship extends Stage {
 
     @Id
@@ -22,3 +23,4 @@ public class Championship extends Stage {
         championshipContestants.add(user);
     }
 }
+

@@ -1,16 +1,20 @@
 package models;
 
+import play.db.ebean.Model;
+
 import javax.persistence.*;
 import java.util.List;
 
-public class Place {
+@Entity
+public class Place extends Model {
 
     @Id
-    public Long id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    public Long placeId;
 
     public String placeName;
     public String placeLocation;
 
-    @OneToMany(mappedBy = "", cascade = CascadeType.ALL)
-    public List<Match> matches;
+    @OneToMany(mappedBy = "matchPlace", cascade = CascadeType.ALL)
+    public List<Match> placeMatches;
 }
