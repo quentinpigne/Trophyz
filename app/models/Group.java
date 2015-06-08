@@ -21,4 +21,8 @@ public class Group {
 
     @OneToMany(mappedBy = "", cascade = CascadeType.ALL)
     public List<Scores> scores;
+
+    public Group(List<User> contestants) {
+        this.groupUsers = contestants;
+    }
 }

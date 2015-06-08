@@ -24,4 +24,16 @@ public abstract class Stage extends Model {
 
     @OneToMany(cascade = CascadeType.ALL)
     public List<Group> stageGroups;
+
+    public Stage(String stageName, Date stageStartDate, Date stageEndDate, Long ptsPerWin, Long ptsPerLoss, boolean drawActive, Long ptsPerDraw) {
+        this.stageName = stageName;
+        this.stageStartDate = stageStartDate;
+        this.stageEndDate = stageEndDate;
+        this.ptsPerWin = ptsPerWin;
+        this.ptsPerLoss = ptsPerLoss;
+        this.drawActive = drawActive;
+        this.ptsPerDraw = ptsPerDraw;
+    }
 }
+
+

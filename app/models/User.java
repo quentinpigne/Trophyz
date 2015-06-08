@@ -20,7 +20,7 @@ public class User extends Model {
     public String email;
     public String phone;
     public String description;
-    public Long nbContest;
+
 
     @ManyToMany(mappedBy = "", cascade = CascadeType.PERSIST)
     public List<Contest> contestsContestant;
@@ -39,4 +39,16 @@ public class User extends Model {
 
     @ManyToMany(mappedBy = "", cascade = CascadeType.ALL)
     public List<Match> matches;
+
+    public User(Long id, String firstName, String lastName, Date birthDate, Long age, String address, String email, String phone, String description) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.birthDate = birthDate;
+        this.age = age;
+        this.address = address;
+        this.email = email;
+        this.phone = phone;
+        this.description = description;
+    }
 }

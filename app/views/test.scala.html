@@ -1,10 +1,24 @@
-<!DOCTYPE html>
-<html>
-<head lang="en">
-  <meta charset="UTF-8">
-  <title></title>
-</head>
-<body>
+@(user : User)
+  <table class="table table-striped">
+    <thead>
+      <tr>
 
-</body>
-</html>
+        <th>firstName</th>
+        <th>lastName</th>
+        <th>birthDate</th>
+        <th>age</th>
+        <th>address</th>
+        <th>phone</th>
+        <th>description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <td>@user.firstName</td>
+      <td>@user.lastName</td>
+      <td>@user.birthDate</td>
+      <td>@user.age</td>
+      <td>@user.address</td>
+      <td>@user.phone</td>
+      <td>@user.description</td>
+    </tbody>
+  </table>
