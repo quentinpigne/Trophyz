@@ -1,5 +1,6 @@
 package models;
 
+import com.avaje.ebean.Ebean;
 import play.db.ebean.Model;
 
 import javax.persistence.*;
@@ -42,7 +43,6 @@ public class User extends Model {
     @ManyToMany(mappedBy = "matchUsers", cascade = CascadeType.ALL)
     public List<Match> userMatches;
 
-
     public User(Long id, String firstName, String lastName, Date birthDate, Long age, String address, String email, String phone, String description) {
         this.userId = id;
         this.userFirstName = firstName;
@@ -55,4 +55,9 @@ public class User extends Model {
         this.userDescription = description;
     }
 
+    public static User logUser(User user) {
+        User userLogged = Ebean.find(User.class).where().eq("userUserName", user.userUserName).findUnique();
+        if(userLogged != null && userLogged.userPassword.equals(user.userPassword)) return userLogged;
+        return null;
+    }
 }

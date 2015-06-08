@@ -12,8 +12,9 @@ public class Authentication extends Controller {
     }
 
     public static Result login() {
-        User user = Form.form(User.class).bindFromRequest().get();
-        return TODO;
+        User user = User.logUser(Form.form(User.class).bindFromRequest().get());
+        if(user != null) return ok("User connecté : " + user.userFirstName + " " + user.userLastName);
+        return notFound("User inconnu");
     }
 
     public static Result logout() {

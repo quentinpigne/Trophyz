@@ -6,6 +6,7 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
+@Table(name = "s_group")
 public class Group extends Model {
 
     @Id

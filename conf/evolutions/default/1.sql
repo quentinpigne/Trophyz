@@ -27,11 +27,11 @@ create table contest (
   constraint pk_contest primary key (contest_id))
 ;
 
-create table group (
+create table s_group (
   group_id                  bigint not null,
   group_name                varchar(255),
   group_stage_stage_id      bigint,
-  constraint pk_group primary key (group_id))
+  constraint pk_s_group primary key (group_id))
 ;
 
 create table knockout (
@@ -99,6 +99,8 @@ create table team (
 
 create table user (
   user_id                   bigint not null,
+  user_user_name            varchar(255),
+  user_password             varchar(255),
   user_first_name           varchar(255),
   user_last_name            varchar(255),
   user_birth_date           timestamp,
@@ -123,10 +125,10 @@ create table contest_team (
   constraint pk_contest_team primary key (contest_contest_id, team_team_id))
 ;
 
-create table group_user (
-  group_group_id                 bigint not null,
+create table s_group_user (
+  s_group_group_id               bigint not null,
   user_user_id                   bigint not null,
-  constraint pk_group_user primary key (group_group_id, user_user_id))
+  constraint pk_s_group_user primary key (s_group_group_id, user_user_id))
 ;
 
 create table match_user (
@@ -150,7 +152,7 @@ create sequence championship_seq;
 
 create sequence contest_seq;
 
-create sequence group_seq;
+create sequence s_group_seq;
 
 create sequence knockout_seq;
 
@@ -170,15 +172,15 @@ alter table championship add constraint fk_championship_stageContest_1 foreign k
 create index ix_championship_stageContest_1 on championship (stage_contest_contest_id);
 alter table contest add constraint fk_contest_contestOrganizer_2 foreign key (contest_organizer_user_id) references user (user_id) on delete restrict on update restrict;
 create index ix_contest_contestOrganizer_2 on contest (contest_organizer_user_id);
-alter table group add constraint fk_group_groupStage_3 foreign key (group_stage_stage_id) references stage (stage_id) on delete restrict on update restrict;
-create index ix_group_groupStage_3 on group (group_stage_stage_id);
+alter table s_group add constraint fk_s_group_groupStage_3 foreign key (group_stage_stage_id) references stage (stage_id) on delete restrict on update restrict;
+create index ix_s_group_groupStage_3 on s_group (group_stage_stage_id);
 alter table knockout add constraint fk_knockout_stageContest_4 foreign key (stage_contest_contest_id) references contest (contest_id) on delete restrict on update restrict;
 create index ix_knockout_stageContest_4 on knockout (stage_contest_contest_id);
-alter table match add constraint fk_match_matchGroup_5 foreign key (match_group_group_id) references group (group_id) on delete restrict on update restrict;
+alter table match add constraint fk_match_matchGroup_5 foreign key (match_group_group_id) references s_group (group_id) on delete restrict on update restrict;
 create index ix_match_matchGroup_5 on match (match_group_group_id);
 alter table match add constraint fk_match_matchPlace_6 foreign key (match_place_place_id) references place (place_id) on delete restrict on update restrict;
 create index ix_match_matchPlace_6 on match (match_place_place_id);
-alter table score add constraint fk_score_scoreGroup_7 foreign key (score_group_group_id) references group (group_id) on delete restrict on update restrict;
+alter table score add constraint fk_score_scoreGroup_7 foreign key (score_group_group_id) references s_group (group_id) on delete restrict on update restrict;
 create index ix_score_scoreGroup_7 on score (score_group_group_id);
 alter table score add constraint fk_score_scoreUser_8 foreign key (score_user_user_id) references user (user_id) on delete restrict on update restrict;
 create index ix_score_scoreUser_8 on score (score_user_user_id);
@@ -195,9 +197,9 @@ alter table contest_team add constraint fk_contest_team_contest_01 foreign key (
 
 alter table contest_team add constraint fk_contest_team_team_02 foreign key (team_team_id) references team (team_id) on delete restrict on update restrict;
 
-alter table group_user add constraint fk_group_user_group_01 foreign key (group_group_id) references group (group_id) on delete restrict on update restrict;
+alter table s_group_user add constraint fk_s_group_user_s_group_01 foreign key (s_group_group_id) references s_group (group_id) on delete restrict on update restrict;
 
-alter table group_user add constraint fk_group_user_user_02 foreign key (user_user_id) references user (user_id) on delete restrict on update restrict;
+alter table s_group_user add constraint fk_s_group_user_user_02 foreign key (user_user_id) references user (user_id) on delete restrict on update restrict;
 
 alter table match_user add constraint fk_match_user_match_01 foreign key (match_match_id) references match (match_id) on delete restrict on update restrict;
 
@@ -223,9 +225,9 @@ drop table if exists contest_user;
 
 drop table if exists contest_team;
 
-drop table if exists group;
+drop table if exists s_group;
 
-drop table if exists group_user;
+drop table if exists s_group_user;
 
 drop table if exists knockout;
 
@@ -253,7 +255,7 @@ drop sequence if exists championship_seq;
 
 drop sequence if exists contest_seq;
 
-drop sequence if exists group_seq;
+drop sequence if exists s_group_seq;
 
 drop sequence if exists knockout_seq;
 
