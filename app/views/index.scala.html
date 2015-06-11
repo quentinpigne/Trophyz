@@ -12,6 +12,18 @@
         <script src="@routes.Assets.at("javascripts/scrolling.js")" type="text/javascript"></script>
     </head>
     <body>
+        @if(flash.containsKey("error")){
+            <div class="alert alert-error">
+            @flash.get("error")
+            </div>
+        }
+
+        @if(flash.containsKey("ok")){
+            <div class="alert alert-info">
+            @flash.get("ok")
+            </div>
+        }
+
         <header>
             <h1><a href="#search">Trophyz</a></h1>
             <nav>
@@ -82,7 +94,7 @@
                 @helper.inputPassword(userForm("userPassword"), '_label -> "Mot de passe")
                 @helper.inputText(userForm("userFirstName"), '_label -> "Prénom")
                 @helper.inputText(userForm("userLastName"), '_label -> "Nom")
-                @helper.inputDate(userForm("userBirthDate"), '_label -> "Date de naissance")
+                @* @helper.inputDate(userForm("userBirthDate"), '_label -> "Date de naissance") *@
                 @helper.inputText(userForm("userAddress"), '_label -> "Adresse")
                 @helper.inputText(userForm("userEmail"), '_label -> "Email")
                 @helper.inputText(userForm("userPhone"), '_label -> "Téléphone")

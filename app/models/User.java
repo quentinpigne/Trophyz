@@ -11,7 +11,7 @@ import java.util.List;
 public class User extends Model {
 
     @Id
-   // @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Long userId;
 
     public String userUserName;

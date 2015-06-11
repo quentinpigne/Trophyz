@@ -98,7 +98,7 @@ create table team (
 ;
 
 create table user (
-  user_id                   bigint not null,
+  user_id                   bigint auto_increment not null,
   user_user_name            varchar(255),
   user_password             varchar(255),
   user_first_name           varchar(255),
@@ -165,8 +165,6 @@ create sequence score_seq;
 create sequence stage_seq;
 
 create sequence team_seq;
-
-create sequence user_seq;
 
 alter table championship add constraint fk_championship_stageContest_1 foreign key (stage_contest_contest_id) references contest (contest_id) on delete restrict on update restrict;
 create index ix_championship_stageContest_1 on championship (stage_contest_contest_id);
@@ -268,6 +266,4 @@ drop sequence if exists score_seq;
 drop sequence if exists stage_seq;
 
 drop sequence if exists team_seq;
-
-drop sequence if exists user_seq;
 
