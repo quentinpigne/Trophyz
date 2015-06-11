@@ -1,5 +1,6 @@
 package controllers;
 
+import com.avaje.ebean.Ebean;
 import models.User;
 import play.data.Form;
 import play.mvc.*;
@@ -8,7 +9,8 @@ public class Authentication extends Controller {
 
     public static Result signup() {
         User newUser = Form.form(User.class).bindFromRequest().get();
-        return TODO;
+        Ebean.save(newUser);
+        return ok(newUser.userUserName);
     }
 
     public static Result login() {
