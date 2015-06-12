@@ -1,36 +1,58 @@
 @(loggedUser : User)
-@main("Home",loggedUser) {
-    <div class="row" id="profile">
-        <div class="col-lg-3 col-sm-6 col-xs-12 col profile-item">
-          <div>
-              <ul>
-                  <li>nom d'utilisateur : @loggedUser.userUserName</li>
-                  <li>email : @loggedUser.userEmail</li>
-              </ul>
-          </div>
-            <a href="#">Changer de mot de passe</a>
-        </div>
-        <div class="col-lg-3 col-sm-6 col-xs-12 profile-item">
-        <div>
-            <img id="profile-im" class="img-center" src="http://placehold.it/750x450" alt="">
-        </div>
-            <a href="#">Changer de photos de profile</a>
+@main("Info",loggedUser){
 
+    <div class="row">
+        <div class="col-lg-8 col-sm-6">
+            <h1 class="page-header">Coucou !
+                <small>fezfz</small>
+            </h1>
+            <p></p>
         </div>
+        <div class="col-lg-4 col-sm-6 text-center">
+            <div id="profile-img"></div>
 
-        <div class="col-lg-3 col-sm-6 col-xs-12 profile-item">
-           <div>
-               <ul>
-                   <li>nombre de competitions en cours : XXX</li>
-                   <li>nombre de Trophz : YYY</li>
-               </ul>
-           </div>
-        </div>
-        <div class="col-lg-3 col-sm-6 col-xs-12 profile-item">
-            <div>
-            @loggedUser.userDescription
-
-            </div>
+              <h3>
+                <a href="#">Modifier</a>
+              </h3>
+            <p>Modifier votre photo de profil</p>
         </div>
     </div>
+    <hr>
+
+    <div class="row">
+
+        <div class="col-lg-4 col-sm-12 text-center">
+            <div class="profile-item">
+                <ul class="text-justify">
+                    <li>nom d'utilisateur : @loggedUser.userUserName</li>
+                    <li>Email : @loggedUser.userEmail</li>
+                    <li>Nom de Famille : @loggedUser.userLastName</li>
+                    <li>Prénom: @loggedUser.userFirstName</li>
+                </ul>
+            </div>
+            <h3>
+                <a href="#">Changer</a>
+            </h3>
+            <p>Changer de mot de passe ou d'adresse mail</p>
+        </div>
+        <div class="col-lg-4 col-sm-12 text-center">
+            <div class="profile-item"></div>
+            <h3>
+                <a href="#">Changer</a>
+            </h3>
+            <p>Changer votre description</p>
+        </div>
+        <div class="col-lg-4 col-sm-12 text-center">
+            <div class="profile-item"></div>
+
+            <h3>
+                <a href="#">Nouvelle Compétition</a>
+            </h3>
+            <p>Vous n'avez pas beaucoup de victoires, Créer une compét</p>
+        </div>
+
+    </div>
+
+
+
 }

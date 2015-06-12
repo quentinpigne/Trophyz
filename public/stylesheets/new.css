@@ -28,7 +28,7 @@ p#userName{
 
 
 body {
-    padding-top: 70px; /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
+    padding-top: 70px;
 }
 
 .img-center {
@@ -36,23 +36,26 @@ body {
 }
 
 
-.profile-item{
-    margin :5px 5px 5px 5px;
-    width: 500px;
-    height: 400px;
-    background: lightseagreen;
-}
-#profile{
-    margin: auto;
-    width: 50%;
-}
+
+
 #profile-img{
     margin: auto;
     width: 450px;
     height: 350px;
 }
-.profile-item div{
-    margin :5px 5px 5px 5px;
+.profile-item{
+    margin :0 auto;
     width: 450px;
     height: 350px;
+    background: lightblue;
+}
+#profile-img{
+    margin :0 auto;
+    width: 300px;
+    height: 200px;
+    background: lightblue;
+}
+
+div.profile-item ul {
+    font-size: large;
 }
