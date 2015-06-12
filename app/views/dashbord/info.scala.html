@@ -1,10 +1,17 @@
 @(loggedUser : User)
 @main("Info",loggedUser){
+    @modal("infoModal","changePass","Modifier Info"){
 
+    }
+    @modal("photoModal","changePass","Modifier sa photo"){
+
+    }
+    @modal("descriptionModal","changePass","Modifier sa description"){
+
+    }
     <div class="row">
         <div class="col-lg-8 col-sm-6">
-            <h1 class="page-header">Coucou !
-                <small>fezfz</small>
+            <h1 class="page-header">Coucou @loggedUser.userFirstName @loggedUser.userLastName
             </h1>
             <p></p>
         </div>
@@ -12,7 +19,7 @@
             <div id="profile-img"></div>
 
               <h3>
-                <a href="#">Modifier</a>
+               <a href="" data-toggle="modal" data-target="#photoModal">Modifier</a>
               </h3>
             <p>Modifier votre photo de profil</p>
         </div>
@@ -31,14 +38,16 @@
                 </ul>
             </div>
             <h3>
-                <a href="#">Changer</a>
+                <h3>
+                    <a href="" data-toggle="modal" data-target="#infoModal">Modifier</a>
+                </h3>
             </h3>
             <p>Changer de mot de passe ou d'adresse mail</p>
         </div>
         <div class="col-lg-4 col-sm-12 text-center">
             <div class="profile-item"></div>
             <h3>
-                <a href="#">Changer</a>
+                <a href="" data-toggle="modal" data-target="#descriptionModal">Modifier</a>
             </h3>
             <p>Changer votre description</p>
         </div>
