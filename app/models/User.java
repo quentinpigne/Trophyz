@@ -10,8 +10,7 @@ import java.util.List;
 @Entity
 public class User extends Model {
 
-   // @GeneratedValue(strategy = GenerationType.AUTO)
-   @Id
+    @Id
     public Long userId;
     @Constraints.Required
     public String userEmail;
