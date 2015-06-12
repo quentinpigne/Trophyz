@@ -1,24 +1,132 @@
-@(user : User)
-  <table class="table table-striped">
-    <thead>
-      <tr>
+@(loggedUser : User)
 
-        <th>firstName</th>
-        <th>lastName</th>
-        <th>birthDate</th>
-        <th>age</th>
-        <th>address</th>
-        <th>phone</th>
-        <th>description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <td>@user.userFirstName</td>
-      <td>@user.userLastName</td>
-      <td>@user.userBirthDate</td>
-      <td>@user.userAge</td>
-      <td>@user.userAddress</td>
-      <td>@user.userPhone</td>
-      <td>@user.userDescription</td>
-    </tbody>
-  </table>
+ @main("test",loggedUser) {
+    <div class="row">
+      <div class="col-md-12">
+        <div id="custom-search-input">
+          <div class="input-group col-md-12">
+            <input type="text" class="form-control input-lg" placeholder="Rechercher un joueur" />
+            <span class="input-group-btn">
+              <button class="btn btn-info btn-lg" type="button">
+                <i class="glyphicon glyphicon-search"></i>
+              </button>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  <div class="row">
+    <div class="row">
+      <div class="col-md-6">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>firstName</th>
+              <th>lastName</th>
+              <th>birthDate</th>
+              <th>age</th>
+              <th>address</th>
+              <th>phone</th>
+              <th>description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <td>@loggedUser.userFirstName</td>
+            <td>@loggedUser.userLastName</td>
+            <td>@loggedUser.userBirthDate</td>
+            <td>@loggedUser.userAge</td>
+            <td>@loggedUser.userAddress</td>
+            <td>@loggedUser.userPhone</td>
+            <td>@loggedUser.userDescription</td>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="col-md-6">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>firstName</th>
+              <th>lastName</th>
+              <th>birthDate</th>
+              <th>age</th>
+              <th>address</th>
+              <th>phone</th>
+              <th>description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <td>@loggedUser.userFirstName</td>
+            <td>@loggedUser.userLastName</td>
+            <td>@loggedUser.userBirthDate</td>
+            <td>@loggedUser.userAge</td>
+            <td>@loggedUser.userAddress</td>
+            <td>@loggedUser.userPhone</td>
+            <td>@loggedUser.userDescription</td>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+
+
+
+  <div class="row">
+    <div class="row">
+      <div class="col-md-6">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>firstName</th>
+              <th>lastName</th>
+              <th>birthDate</th>
+              <th>age</th>
+              <th>address</th>
+              <th>phone</th>
+              <th>description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <td>@loggedUser.userFirstName</td>
+            <td>@loggedUser.userLastName</td>
+            <td>@loggedUser.userBirthDate</td>
+            <td>@loggedUser.userAge</td>
+            <td>@loggedUser.userAddress</td>
+            <td>@loggedUser.userPhone</td>
+            <td>@loggedUser.userDescription</td>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="col-md-6">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>firstName</th>
+              <th>lastName</th>
+              <th>birthDate</th>
+              <th>age</th>
+              <th>address</th>
+              <th>phone</th>
+              <th>description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <td>@loggedUser.userFirstName</td>
+            <td>@loggedUser.userLastName</td>
+            <td>@loggedUser.userBirthDate</td>
+            <td>@loggedUser.userAge</td>
+            <td>@loggedUser.userAddress</td>
+            <td>@loggedUser.userPhone</td>
+            <td>@loggedUser.userDescription</td>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+
+
+}

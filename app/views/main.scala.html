@@ -1,17 +1,40 @@
-@(title: String)(content: Html)
+@(title: String, loggedUser : User)(content: Html)
 
 <!DOCTYPE html>
 
 <html>
     <head>
         <title>@title</title>
-        <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/bootstrap.min.css")">
-        <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/main.css")">
+        <link rel="stylesheet" media="screen" href="@routes.Assets.at("bootstrap/css/bootstrap.css")">
+        <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/new.css")">
         <link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/favicon.png")">
         <script src="@routes.Assets.at("javascripts/jquery-2.1.4.min.js")" type="text/javascript"></script>
         <script src="@routes.Assets.at("javascripts/bootstrap.min.js")" type="text/javascript"></script>
     </head>
     <body>
-        @content
+        <div class="container-fluid">
+            <header id="entete" class="row">
+                <div class="col-lg-12">
+                     @top(loggedUser)
+                </div>
+            </header>
+
+            <div class="row">
+             @if(loggedUser == null){
+                 <section id="corps" class="col-lg-12">
+                 @content
+                 </section>
+             }else{
+                 <nav id="menu" class="col-lg-2">
+                     Menu
+                 </nav>
+                 <section id="corps" class="col-lg-10">
+                 @content
+                 </section>
+             }
+            </div>
+
+
+        </div>
     </body>
 </html>

@@ -1,0 +1,28 @@
+@import url(http://fonts.googleapis.com/css?family=Pacifico);
+@import url(http://fonts.googleapis.com/css?family=Ubuntu);
+
+
+*{
+    font-family: 'Ubuntu';
+}
+
+h2, #brand a{
+    font-family: 'Pacifico';
+}
+
+p#userName{
+    color: red;
+}
+
+#findUser{
+    margin: auto;
+}
+
+#menu{
+    background-color: lightgreen;
+    border: 2px solid black;
+    border-radius: 6px;
+    line-height: 40px;
+    text-align: center;
+}
+

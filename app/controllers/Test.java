@@ -8,7 +8,6 @@ import views.html.index;
 import views.html.main;
 import views.html.test;
 
-import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -20,7 +19,7 @@ import java.util.List;
 public class Test extends Controller {
     public static Result index() {
         Html html = test.render(Application.loggedUser);
-        return ok(main.render("Test des classes",html));
+        return ok(main.render("Test des classes",Application.loggedUser,html));
     }
 
 }

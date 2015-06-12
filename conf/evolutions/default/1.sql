@@ -98,8 +98,7 @@ create table team (
 ;
 
 create table user (
-<<<<<<< HEAD
-  user_id                   bigint  auto_increment not null,
+  user_id                   bigint auto_increment not null,
   user_email                varchar(255),
   user_password             varchar(255),
   user_first_name           varchar(255),
