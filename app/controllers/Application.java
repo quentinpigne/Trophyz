@@ -53,8 +53,6 @@ public class Application extends Controller {
             session().clear();
             return badRequest("invalid password");
         }
-        loggedUser.userFirstName = "Yoo";
-        Ebean.save(loggedUser);
         session().clear();
         session("email", email);
         return ok(home.render(loggedUser));

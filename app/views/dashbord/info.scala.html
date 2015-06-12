@@ -1,13 +1,22 @@
-@(loggedUser : User)
+@(loggedUser : User, userForm : Form[User])
 @main("Info",loggedUser){
-    @modal("infoModal","changePass","Modifier Info"){
+    @modal("infoModal","changePass","Modifier Info") {
+        @helper.form(action = helper.CSRF(routes.Dashbord.modifyInfo()), 'id -> "modifyInfoForm") {
+            @helper.inputText(userForm("userEmail"), '_label -> "Email")
+            @helper.inputText(userForm("userFirstName"), '_label -> "Prénom")
+            @helper.inputText(userForm("userLastName"), '_label -> "Nom")
+            <button type="submit" class="btn btn-default">Modifier</button>
+        }
 
     }
     @modal("photoModal","changePass","Modifier sa photo"){
 
     }
     @modal("descriptionModal","changePass","Modifier sa description"){
-
+        @helper.form(action = helper.CSRF(routes.Dashbord.modifyDescription()), 'id -> "modifyDescriptionForm") {
+            @helper.textarea(userForm("userDescription"), '_label -> "Description")
+            <button type="submit" class="btn btn-default">Modifier</button>
+        }
     }
     <div class="row">
         <div class="col-lg-8 col-sm-6">
@@ -45,7 +54,9 @@
             <p>Changer de mot de passe ou d'adresse mail</p>
         </div>
         <div class="col-lg-4 col-sm-12 text-center">
-            <div class="profile-item"></div>
+            <div class="profile-item">
+                @loggedUser.userDescription
+            </div>
             <h3>
                 <a href="" data-toggle="modal" data-target="#descriptionModal">Modifier</a>
             </h3>
