@@ -2,7 +2,7 @@ package models;
 
 import com.avaje.ebean.Ebean;
 import play.db.ebean.Model;
-
+import play.data.validation.Constraints;
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
@@ -10,18 +10,21 @@ import java.util.List;
 @Entity
 public class User extends Model {
 
-    @Id
    // @GeneratedValue(strategy = GenerationType.AUTO)
+   @Id
     public Long userId;
-
-    public String userUserName;
+    @Constraints.Required
+    public String userEmail;
+    @Constraints.Required
     public String userPassword;
     public String userFirstName;
     public String userLastName;
     public Date userBirthDate;
     public Long userAge;
     public String userAddress;
-    public String userEmail;
+
+    public String userUserName;
+
     public String userPhone;
     public String userDescription;
 
@@ -43,16 +46,24 @@ public class User extends Model {
     @ManyToMany(mappedBy = "matchUsers", cascade = CascadeType.ALL)
     public List<Match> userMatches;
 
-    public User(Long id, String firstName, String lastName, Date birthDate, Long age, String address, String email, String phone, String description) {
-        this.userId = id;
-        this.userFirstName = firstName;
-        this.userLastName = lastName;
-        this.userBirthDate = birthDate;
-        this.userAge = age;
-        this.userAddress = address;
+    public User(String email, String password) {
         this.userEmail = email;
-        this.userPhone = phone;
-        this.userDescription = description;
+        this.userPassword = password;
+    }
+
+    public User(Long userId, String userEmail, String userPassword, String userFirstName, String userLastName,
+                Date userBirthDate, Long userAge, String userAddress, String userUserName, String userPhone, String userDescription) {
+        this.userId = userId;
+        this.userEmail = userEmail;
+        this.userPassword = userPassword;
+        this.userFirstName = userFirstName;
+        this.userLastName = userLastName;
+        this.userBirthDate = userBirthDate;
+        this.userAge = userAge;
+        this.userAddress = userAddress;
+        this.userUserName = userUserName;
+        this.userPhone = userPhone;
+        this.userDescription = userDescription;
     }
 
     public static User logUser(User user) {
@@ -60,4 +71,9 @@ public class User extends Model {
         if(userLogged != null && userLogged.userPassword.equals(user.userPassword)) return userLogged;
         return null;
     }
+    public static User authenticate(String email, String password){
+        return finder.where().eq("userEmail", email).eq("userPassword",password).findUnique();
+    }
+    public static Finder<Long, User> finder
+            = new Finder<Long, User>(Long.class, User.class);
 }

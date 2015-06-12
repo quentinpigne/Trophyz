@@ -99,14 +99,14 @@ create table team (
 
 create table user (
   user_id                   bigint not null,
-  user_user_name            varchar(255),
+  user_email                varchar(255),
   user_password             varchar(255),
   user_first_name           varchar(255),
   user_last_name            varchar(255),
   user_birth_date           timestamp,
   user_age                  bigint,
   user_address              varchar(255),
-  user_email                varchar(255),
+  user_user_name            varchar(255),
   user_phone                varchar(255),
   user_description          varchar(255),
   constraint pk_user primary key (user_id))
