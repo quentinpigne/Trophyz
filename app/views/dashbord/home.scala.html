@@ -1,10 +1,49 @@
-<!DOCTYPE html>
-<html>
-<head lang="en">
-    <meta charset="UTF-8">
-    <title></title>
-</head>
-<body>
+@(loggedUser : User)
+@main("Home",loggedUser){
 
-</body>
-</html>
+    <div class="row">
+        <div class="col-lg-8 col-sm-6">
+            <h1 class="page-header">Bienvenue !
+                <small>Content de vous revoir sur Trophyz</small>
+            </h1>
+            <p></p>
+        </div>
+        <div class="col-lg-4 col-sm-6 text-center">
+            <img id="img-profile" class="img-circle img-responsive img-center" src="http://placehold.it/100x100" alt="">
+            <h3>
+                <a href="@routes.Dashbord.info()">Mon profil</a>
+            </h3>
+            <p>Afficher ou Editez votre profil!</p>
+        </div>
+    </div>
+    <hr>
+
+    <div class="row">
+
+        <div class="col-lg-4 col-sm-12 text-center">
+            <img class="img-circle img-responsive img-center" src="http://placehold.it/200x200" alt="">
+            <h3>
+                <a href="#">Compétitions</a>
+            </h3>
+            <p>Afficher les Compétitions auquelles vous participez</p>
+        </div>
+        <div class="col-lg-4 col-sm-12 text-center">
+            <img class="img-circle img-responsive img-center" src="http://placehold.it/200x200" alt="">
+            <h3>
+                <a href="#">Mes compétitions</a>
+            </h3>
+            <p>Afficher les compétitions que vous hébergez</p>
+        </div>
+        <div class="col-lg-4 col-sm-12 text-center">
+            <img class="img-circle img-responsive img-center" src="http://placehold.it/200x200" alt="">
+            <h3>
+                <a href="#">Nouvelle Compétition</a>
+            </h3>
+            <p>Créer une nouvelle compétion</p>
+        </div>
+
+    </div>
+
+
+
+}

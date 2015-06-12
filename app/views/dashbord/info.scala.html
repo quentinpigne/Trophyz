@@ -1,10 +1,28 @@
-<!DOCTYPE html>
-<html>
-<head lang="en">
-  <meta charset="UTF-8">
-  <title></title>
-</head>
-<body>
+@(loggedUser : User)
+@main("Home",loggedUser) {
+    <div class="row">
+        <div class="col-md-6 profile-item">
+           <ul>
+               <li>nom d'utilisateur : @loggedUser.userUserName</li>
+               <li>email : @loggedUser.userEmail</li>
 
-</body>
-</html>
+           </ul>
+            <a href="#">Changer de mot de passe</a>
+        </div>
+        <div class="col-md-6 profile-item">
+            <img class="img-responsive img-center" src="http://placehold.it/750x450" alt="">
+            <a href="#">Changer de photos de profile</a>
+        </div>
+        <div class="col-md-6 profile-item">
+            <ul>
+                <li>nombre de competitions en cours : XXX</li>
+                <li>nombre de Trophz : YYY</li>
+            </ul>
+        </div>
+        <div class="col-md-6 profile-item">
+            @loggedUser.userDescription
+        </div>
+
+
+    </div>
+}

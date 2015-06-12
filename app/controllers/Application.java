@@ -6,6 +6,7 @@ import play.data.Form;
 import play.mvc.*;
 
 import views.html.*;
+import views.html.dashbord.home;
 
 import static play.data.Form.form;
 
@@ -54,7 +55,7 @@ public class Application extends Controller {
         }
         session().clear();
         session("email", email);
-        return ok(test.render(loggedUser));
+        return ok(home.render(loggedUser));
 
     }
 
@@ -66,4 +67,5 @@ public class Application extends Controller {
         flash("ok", String.format("Utilisateur %s enregistré", newUser.userUserName));
         return redirect(routes.Application.index());
     }
+
 }
