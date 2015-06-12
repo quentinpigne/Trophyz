@@ -35,9 +35,24 @@ body {
     margin: 0 auto;
 }
 
+
 .profile-item{
-    margin-bottom: 25px;
-    width: 550px;
-    height: 550px;
-    border: solid red 5px;
+    margin :5px 5px 5px 5px;
+    width: 500px;
+    height: 400px;
+    background: lightseagreen;
+}
+#profile{
+    margin: auto;
+    width: 50%;
+}
+#profile-img{
+    margin: auto;
+    width: 450px;
+    height: 350px;
+}
+.profile-item div{
+    margin :5px 5px 5px 5px;
+    width: 450px;
+    height: 350px;
 }

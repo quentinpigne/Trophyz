@@ -1,28 +1,36 @@
 @(loggedUser : User)
 @main("Home",loggedUser) {
-    <div class="row">
-        <div class="col-md-6 profile-item">
-           <ul>
-               <li>nom d'utilisateur : @loggedUser.userUserName</li>
-               <li>email : @loggedUser.userEmail</li>
-
-           </ul>
+    <div class="row" id="profile">
+        <div class="col-lg-3 col-sm-6 col-xs-12 col profile-item">
+          <div>
+              <ul>
+                  <li>nom d'utilisateur : @loggedUser.userUserName</li>
+                  <li>email : @loggedUser.userEmail</li>
+              </ul>
+          </div>
             <a href="#">Changer de mot de passe</a>
         </div>
-        <div class="col-md-6 profile-item">
-            <img class="img-responsive img-center" src="http://placehold.it/750x450" alt="">
+        <div class="col-lg-3 col-sm-6 col-xs-12 profile-item">
+        <div>
+            <img id="profile-im" class="img-center" src="http://placehold.it/750x450" alt="">
+        </div>
             <a href="#">Changer de photos de profile</a>
+
         </div>
-        <div class="col-md-6 profile-item">
-            <ul>
-                <li>nombre de competitions en cours : XXX</li>
-                <li>nombre de Trophz : YYY</li>
-            </ul>
+
+        <div class="col-lg-3 col-sm-6 col-xs-12 profile-item">
+           <div>
+               <ul>
+                   <li>nombre de competitions en cours : XXX</li>
+                   <li>nombre de Trophz : YYY</li>
+               </ul>
+           </div>
         </div>
-        <div class="col-md-6 profile-item">
+        <div class="col-lg-3 col-sm-6 col-xs-12 profile-item">
+            <div>
             @loggedUser.userDescription
+
+            </div>
         </div>
-
-
     </div>
 }
