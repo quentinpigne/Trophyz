@@ -19,7 +19,6 @@ public class Secured extends Security.Authenticator {
     @Override
     public Result onUnauthorized(Context ctx) {
         flash("error", "Veillez vous identifiez");
-
         return redirect(routes.Application.index());
     }
 }

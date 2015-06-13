@@ -20,7 +20,6 @@ public class Dashbord extends Controller{
 
     public static Result info() {
         Form<User> userFilledForm = Form.form(User.class);
-        userFilledForm.fill(Application.loggedUser);
         return ok(info.render(Application.loggedUser,userFilledForm));
 
     }
