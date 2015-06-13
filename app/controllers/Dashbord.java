@@ -47,21 +47,21 @@ public class Dashbord extends Controller{
     }
 
     public static Result modifyDescription(){
-        Form<User> userFilledForm = Form.form(User.class);
+        Form<User> userForm = Form.form(User.class);
         Map<String, String> data = Form.form(User.class).bindFromRequest().data();
         Application.loggedUser.userDescription = data.get("userDescription");
 
         Ebean.save(Application.loggedUser);
-        return ok(info.render(Application.loggedUser,userFilledForm));
+        return ok(info.render(Application.loggedUser,userForm));
     }
 
 
     public static Result modifyPhoto(){
-        Form<User> userFilledForm = Form.form(User.class);
+        Form<User> userForm = Form.form(User.class);
         Map<String, String> data = Form.form(User.class).bindFromRequest().data();
         Application.loggedUser.userDescription = data.get("userDescription");
 
         Ebean.save(Application.loggedUser);
-        return ok(info.render(Application.loggedUser,userFilledForm));
+        return ok(info.render(Application.loggedUser,userForm));
     }
 }

@@ -22,7 +22,7 @@ public class Application extends Controller {
     }
 
     public static class Login{
-        public String email;
+        public String username;
         public String password;
     }
     public static  User loggedUser = null;
@@ -46,15 +46,15 @@ public class Application extends Controller {
     }
     public static Result authenticate() {
         Form<Login> loginForm = form(Login.class).bindFromRequest();
-        String email = loginForm.get().email;
+        String username = loginForm.get().username;
         String password = loginForm.get().password;
-        loggedUser = User.authenticate(email, password);
+        loggedUser = User.authenticate(username, password);
         if (loggedUser == null){
             session().clear();
             return badRequest("invalid password");
         }
         session().clear();
-        session("email", email);
+        session("username", username);
         return ok(home.render(loggedUser));
 
     }

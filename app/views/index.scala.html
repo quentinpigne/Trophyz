@@ -14,54 +14,56 @@
     }
 
 
-    <section id="presentation">
-        <article>
-            <h2>Présentation</h2>
-            <p>
-                Trophyz est une plate-forme en ligne centrée l'organisation de tournois et de compétitions de toutes sortes,
-                tout cela d'une manière sociale et amusante. Elle permet à toute personne inscrite de participer à des
-                compétitions, mais aussi d'en créer, soit en utilisant un modèle (un championnat de football,
-                un tournoi de belote...), soit à l'aide de l'outil de création lui permettant une personnalisation sans limite.
-                Il lui faut ensuite y inviter d'autres membres ou bien les laisser s'inscrire par eux-même. Une fois les
-                inscriptions terminées, l'application se charge d'organiser les différents matchs selon un calendrier et les
-                consignes laissées par l'organisateur lors de la création. À l'issu de chaque rencontre, les participants
-                entrent leurs scores (modéré si besoin par l'organisateur en cas de litige), un classement est ainsi ensuite
-                établi et des récompenses (trophées, badges...) peuvent être remis aux participants afin de venir enrichir leur
-                page de profil.
-            </p>
-        </article>
-        <article>
-            <h2>Gestion des membres</h2>
-            <p>
-                Chaque membre possède une page de profil recensant ses informations personnelles, les équipes qu'ils suit ou
-                dans lesquelles il est membre, mais aussi d'autres informations comme un historique des compétitions auxquelles
-                il a participé, des statistiques sur ses performances et pour finir une étagère sur laquelle sont entreposés
-                les trophées et badges acquis au fil de ses participations sur la plate-forme. Chaque membre a la possibilité
-                de suivre un autre membre ou une équipe afin d'être informé en direct de ses participations à des compétitions,
-                de ses résultats...
-            </p>
-            <p>
-                Une gestion d'équipes est proposée sur la plate-forme, donnant la possibilité aux membres de créer des équipes
-                permanentes, chacune avec sa page et son palmarès, dans lesquelles sont inscrits d'autres membres et qui peuvent
-                ainsi participer aux compétitions par équipe.
-            </p>
-        </article>
-        <article>
-            <h2>Objectifs</h2>
-            <p>
-                Les objectifs de la plate-forme sont donc relativement simples. Le principal étant de fournir un service
-                d'organisation de compétitions très généraliste, de par la diversité des compétitions qu'il permet d'organiser,
-                et simple d'utilisation à travers son interface agréable, intuitive et les diverses automatisations qu'elle
-                propose pour l'organisation (création des matchs, établissement du classement...). L'objectif secondaire étant
-                d'être aussi social et amusant, en proposant un système de suivi de membres et d'équipes, de statistiques de
-                performances et bien sûr de trophées et de badges, récompenses symboliques à la participation des membres aux
-                diverses compétitions.
-            </p>
-        </article>
-    </section>
 
         <div class="row">
+            <section id="presentation" class="col-lg-6">
+                <article>
+                    <h2>Présentation</h2>
+                    <p>
+                        Trophyz est une plate-forme en ligne centrée l'organisation de tournois et de compétitions de toutes sortes,
+                        tout cela d'une manière sociale et amusante. Elle permet à toute personne inscrite de participer à des
+                        compétitions, mais aussi d'en créer, soit en utilisant un modèle (un championnat de football,
+                        un tournoi de belote...), soit à l'aide de l'outil de création lui permettant une personnalisation sans limite.
+                        Il lui faut ensuite y inviter d'autres membres ou bien les laisser s'inscrire par eux-même. Une fois les
+                        inscriptions terminées, l'application se charge d'organiser les différents matchs selon un calendrier et les
+                        consignes laissées par l'organisateur lors de la création. À l'issu de chaque rencontre, les participants
+                        entrent leurs scores (modéré si besoin par l'organisateur en cas de litige), un classement est ainsi ensuite
+                        établi et des récompenses (trophées, badges...) peuvent être remis aux participants afin de venir enrichir leur
+                        page de profil.
+                    </p>
+                </article>
+                <article>
+                    <h2>Gestion des membres</h2>
+                    <p>
+                        Chaque membre possède une page de profil recensant ses informations personnelles, les équipes qu'ils suit ou
+                        dans lesquelles il est membre, mais aussi d'autres informations comme un historique des compétitions auxquelles
+                        il a participé, des statistiques sur ses performances et pour finir une étagère sur laquelle sont entreposés
+                        les trophées et badges acquis au fil de ses participations sur la plate-forme. Chaque membre a la possibilité
+                        de suivre un autre membre ou une équipe afin d'être informé en direct de ses participations à des compétitions,
+                        de ses résultats...
+                    </p>
+                    <p>
+                        Une gestion d'équipes est proposée sur la plate-forme, donnant la possibilité aux membres de créer des équipes
+                        permanentes, chacune avec sa page et son palmarès, dans lesquelles sont inscrits d'autres membres et qui peuvent
+                        ainsi participer aux compétitions par équipe.
+                    </p>
+                </article>
+                <article>
+                    <h2>Objectifs</h2>
+                    <p>
+                        Les objectifs de la plate-forme sont donc relativement simples. Le principal étant de fournir un service
+                        d'organisation de compétitions très généraliste, de par la diversité des compétitions qu'il permet d'organiser,
+                        et simple d'utilisation à travers son interface agréable, intuitive et les diverses automatisations qu'elle
+                        propose pour l'organisation (création des matchs, établissement du classement...). L'objectif secondaire étant
+                        d'être aussi social et amusant, en proposant un système de suivi de membres et d'équipes, de statistiques de
+                        performances et bien sûr de trophées et de badges, récompenses symboliques à la participation des membres aux
+                        diverses compétitions.
+                    </p>
+                </article>
+            </section>
+            <div class="col-lg-6">
             @signin(userForm)
+            </div>
         </div>
         <section id="signup">
 
@@ -77,7 +79,7 @@
                 </div>
                 <div class="modal-body">
                 @helper.form(action = helper.CSRF(routes.Application.authenticate()), 'id -> "loginForm") {
-                    @helper.inputText(loginForm("email"), '_label -> "Nom d'utilisateur")
+                    @helper.inputText(loginForm("username"), '_label -> "Nom d'utilisateur")
                     @helper.inputPassword(loginForm("password"), '_label -> "Mot de passe")
                     <button type="submit" class="btn btn-default">Connexion</button>
                 }

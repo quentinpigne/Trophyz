@@ -71,8 +71,8 @@ public class User extends Model {
         if(userLogged != null && userLogged.userPassword.equals(user.userPassword)) return userLogged;
         return null;
     }
-    public static User authenticate(String email, String password){
-        return finder.where().eq("userEmail", email).eq("userPassword",password).findUnique();
+    public static User authenticate(String username, String password){
+        return finder.where().eq("userUserName", username).eq("userPassword",password).findUnique();
     }
     public static Finder<Long, User> finder
             = new Finder<Long, User>(Long.class, User.class);

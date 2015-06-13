@@ -2,10 +2,22 @@
 @main("Info",loggedUser){
     @modal("infoModal","changePass","Modifier Info") {
         @helper.form(action = helper.CSRF(routes.Dashbord.modifyInfo()), 'id -> "modifyInfoForm") {
-            @helper.inputText(userForm("userEmail"), '_label -> "Email")
-            @helper.inputText(userForm("userFirstName"), '_label -> "Prénom")
-            @helper.inputText(userForm("userLastName"), '_label -> "Nom")
-            <button type="submit" class="btn btn-default">Modifier</button>
+
+            <label for="userEmail">Email</label>
+            <input type="email" name="userEmail" id="" class="form-control input-sm chat-input" placeholder="Email"
+            value="@userForm("userEmail").value"/>
+            <br>
+
+            <label for="userFirstName">Prénom</label>
+            <input type="text" name="userFirstName" id="" class="form-control input-sm chat-input" placeholder="Prénom"
+            value="@userForm("userFirstName").value"/>
+            <br>
+
+            <label for="userLastName">Nom</label>
+            <input type="text" name="userLastName" id="" class="form-control input-sm chat-input" placeholder="Nom"
+            value="@userForm("userLastName").value"/>
+            <br>
+            <button type="submit" class="btn btn-primary">Modifier</button>
         }
 
     }
@@ -14,8 +26,11 @@
     }
     @modal("descriptionModal","changePass","Modifier sa description"){
         @helper.form(action = helper.CSRF(routes.Dashbord.modifyDescription()), 'id -> "modifyDescriptionForm") {
-            @helper.textarea(userForm("userDescription"), '_label -> "Description")
-            <button type="submit" class="btn btn-default">Modifier</button>
+            <label for="userDescription">Description</label>
+            <textarea type="text" name="userDescription" id="" class="form-control input-sm chat-input" placeholder="Description"
+            value="@userForm("userDescription").value"></textarea>
+            <br>
+            <button type="submit" class="btn btn-primary">Modifier</button>
         }
     }
     <div class="row">
