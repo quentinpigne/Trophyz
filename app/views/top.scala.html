@@ -2,16 +2,18 @@
         <nav class="navbar navbar-inverse">
             <div class="container-fluid">
                 <ul class="nav navbar-nav">
-                    <li id="brand"><a href="@routes.Application.index()">Trophyz</a></li>
                     @if(loggedUser == null){
+                        <li id="brand"><a href="@routes.Application.index()">Trophyz</a></li>
                         <li><a href="#presentation">Qu'est ce que c'est ?</a></li>
                         <li><a href="#signup">Comment s'inscrire ?</a></li>
                         <li> <a href="#">Mes tournois</a> </li>
                         <li> <a href="#">Mes amis</a> </li>
                     } else{
+                        <li id="brand"><a href="@routes.Dashbord.home()">Trophyz</a></li>
                         <p id="userName" class="navbar-text">
                             Bienvenue @loggedUser.userUserName
                         </p>
+
 
                     }
 
